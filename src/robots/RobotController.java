@@ -61,7 +61,7 @@ public class RobotController {
             robot.stepForward();
     }
 
-    public void moveRobot(Robot robot, int toX, int toY) {
+    public static void moveRobot(Robot robot, int toX, int toY) {
         int x = robot.getX();
         int y = robot.getY();
         int deltaX = Math.abs(toX - x); // растояние которое нужно пройти по X
