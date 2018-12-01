@@ -1,20 +1,23 @@
 package robots2;
 
 class RobotController {
-    static void moveRobot(RobotConnectionManager robotConnectionManager, int toX, int toY) throws Exception {
-        RobotImproved robotImproved = new RobotImproved();
+    static void moveRobot(RobotConnectionManager robotConnectionManager, int toX, int toY) {
+        RobotConnection robotImproved;
         for (int i = 3; i > 0; i--) {
             try {
-                robotConnectionManager.getConnection();
-                robotImproved.moveRobotTo(toX, toY);
-                i = 0;
-            } catch (Exception e) {
-                robotImproved.close();
-                throw new Exception(e);
-            } catch (Throwable throwable) {
-                if (i == 0) throw new RobotConnectionException("соединение неудачно", throwable);
-            } finally {
-                robotImproved.close();
+                robotImproved = robotConnectionManager.getConnection();
+                try {
+                    robotImproved.moveRobotTo(toX, toY);
+                    break;
+                } catch (RobotConnectionException e) {
+                    robotImproved.close();
+                    throw new RobotConnectionException("ошибка попытки управления", e);
+                } finally {
+                    robotImproved.close();
+                }
+            } catch (RobotConnectionException e) {
+                System.out.println(i);
+                if (i == 1) throw new RobotConnectionException("соединение неудачно", e);
             }
         }
     }

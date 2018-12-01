@@ -10,4 +10,5 @@ public class RobotImprovedManager implements RobotConnectionManager {
         if (b) throw new RobotConnectionException("fs");
         return new RobotImproved();
     }
+
 }
