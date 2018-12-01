@@ -1,8 +1,8 @@
 package robots;
 
-public class RobotController {
+class RobotController {
 
-    private static void Povorot(Robot robot, Direction direction) {
+    private static void povorot(Robot robot, Direction direction) {
         //повернуть робота в нужном направлении
         Direction directionRobot = robot.getDirection();
         if (direction == directionRobot) {
@@ -11,35 +11,51 @@ public class RobotController {
         switch (directionRobot) {
             case RIGHT:
                 switch (direction) {
+                    case RIGHT:
+                        break;
                     case UP:
                         robot.turnLeft();
                         break;
                     case LEFT:
                         robot.turnRight();
+                        robot.turnRight();
+                        break;
                     case DOWN:
                         robot.turnRight();
+                        break;
                 }
                 break;
             case UP:
                 switch (direction) {
+                    case RIGHT:
+                        robot.turnRight();
+                        break;
+                    case UP:
+                        break;
                     case LEFT:
                         robot.turnLeft();
                         break;
                     case DOWN:
                         robot.turnRight();
-                    case RIGHT:
                         robot.turnRight();
+                        break;
+
                 }
                 break;
             case LEFT:
                 switch (direction) {
+                    case RIGHT:
+                        robot.turnLeft();
+                        robot.turnLeft();
+                        break;
                     case UP:
                         robot.turnRight();
                         break;
-                    case RIGHT:
-                        robot.turnLeft();
+                    case LEFT:
+                        break;
                     case DOWN:
                         robot.turnLeft();
+                        break;
                 }
                 break;
             case DOWN:
@@ -49,14 +65,19 @@ public class RobotController {
                         break;
                     case UP:
                         robot.turnRight();
+                        robot.turnRight();
+                        break;
                     case LEFT:
                         robot.turnRight();
+                        break;
+                    case DOWN:
+                        break;
                 }
         }
     }
 
     private static void robotRun(Robot robot, int delta, Direction direction) {
-        Povorot(robot, direction);
+        povorot(robot, direction);
         for (int i = 0; i < delta; i++)
             robot.stepForward();
     }
