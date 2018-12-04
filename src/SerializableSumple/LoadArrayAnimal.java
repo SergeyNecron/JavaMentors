@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.PipedInputStream;
 
-public class LoadArrayAnimal {
-    public static Animal[] deserializeAnimalArray(PipedInputStream pis) {
+class LoadArrayAnimal {
+    static Animal[] deserializeAnimalArray(PipedInputStream pis) {
         try {
             ObjectInputStream in = new ObjectInputStream(pis);
             Integer lenght = Integer.parseInt(in.readObject().toString());
             System.out.println(lenght);
-            Animal[] animals = new Animal[5];
+            Animal[] animals = new Animal[lenght];
 
             for (int i = 0; i < lenght; i++) {
                 animals[i] = (Animal) in.readObject();
