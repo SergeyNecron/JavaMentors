@@ -1,8 +1,6 @@
 package SerializableSumple;
 
-import java.io.IOException;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import java.io.ByteArrayOutputStream;
 
 import static SerializableSumple.LoadArrayAnimal.deserializeAnimalArray;
 import static SerializableSumple.SaveArrayAnimal.serializeAnimalArray;
@@ -10,24 +8,24 @@ import static SerializableSumple.SaveArrayAnimal.serializeAnimalArray;
 public class AnimalMain {
 
 
-    public static void main(String[] args) throws IOException {
-        PipedOutputStream pos = new PipedOutputStream();
-        PipedInputStream pis = new PipedInputStream(pos);
+    public static void main(String[] args) {
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
 
         Animal[] animals = new Animal[5];
-
-        for (int i = 0; i < animals.length; i++) {
+        int size = animals.length;
+        for (int i = 0; i < size; i++) {
             animals[i] = new Animal("Cat" + i);
         }
 
-        serializeAnimalArray(pos, animals);
+        serializeAnimalArray(bout, animals);
 
-        animals = deserializeAnimalArray(pis);
+        byte[] array = bout.toByteArray();
+
+        animals = deserializeAnimalArray(array);
 
         for (Animal animal : animals) {
             System.out.println(animal);
         }
-
-
     }
 }
+
