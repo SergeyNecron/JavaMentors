@@ -1,4 +1,4 @@
-package robots2;
+package TryCatch;
 
 public interface RobotConnectionManager {
     RobotConnection getConnection();

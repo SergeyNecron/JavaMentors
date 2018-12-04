@@ -1,4 +1,4 @@
-package robots2;
+package TryCatch;
 
 import java.util.Random;
 

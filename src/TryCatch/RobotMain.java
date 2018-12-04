@@ -1,4 +1,4 @@
-package robots2;
+package TryCatch;
 
 public class RobotMain {
     public static void main(String[] args) {

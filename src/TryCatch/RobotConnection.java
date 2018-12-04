@@ -1,4 +1,4 @@
-package robots2;
+package TryCatch;
 
 public interface RobotConnection extends AutoCloseable {
     void moveRobotTo(int x, int y);

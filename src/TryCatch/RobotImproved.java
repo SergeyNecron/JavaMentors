@@ -1,4 +1,4 @@
-package robots2;
+package TryCatch;
 
 public class RobotImproved implements RobotConnection {
 
