@@ -1,12 +1,23 @@
 package FabricMetod;
 
 class Hourse implements Animal {
+    static Factory factory = Hourse::new;
+    private String status;
+
     @Override
     public void move() {
-        System.out.println("Лошадь скачет");
+        status = "Лошадь скачет";
     }
 
-    public static Factory factory = Hourse::new;
+    @Override
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(String s) {
+        status = s;
+    }
     //   public static Factory factory = () -> new Hourse();
 /*    public static Factory factory = new Factory() {
         @Override

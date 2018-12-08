@@ -1,13 +1,23 @@
 package FabricMetod;
 
 class Kenguru implements Animal {
+    static Factory factory = Kenguru::new;
+    private String status;
 
     @Override
     public void move() {
-        System.out.println("Кенгуру прыгает");
+        setStatus("Кенгуру прыгает");
     }
 
-    public static Factory factory = Kenguru::new;
+    @Override
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(String s) {
+        status = s;
+    }
     //   public static Factory factory = () -> new Kenguru();
 /*    public static Factory factory = new Factory() {
         @Override
