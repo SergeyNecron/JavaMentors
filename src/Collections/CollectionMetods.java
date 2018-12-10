@@ -4,6 +4,10 @@ import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
+//Предположим, у нас есть две переменных:
+//        Collection<?> collection = ...;
+//        Object object = ...;
+//        Какие операции над collection допустимы?
 public class CollectionMetods {
     public static void main(String[] args) {
         Collection<?> collection = new AbstractCollection<Object>() {
@@ -26,6 +30,7 @@ public class CollectionMetods {
         collection.iterator();
         collection.contains(object);
         //collection.add(object);
+        //collection.addAll(Arrays.asList(object))
     }
 
 }
